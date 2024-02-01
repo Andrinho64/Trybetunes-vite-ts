@@ -1,10 +1,10 @@
 import Header from '../components/Header';
 
-export default function NotFound() {
+export default function Loading() {
   return (
     <div data-testid="not-found-page">
       <Header />
-      <h1>Not found</h1>
+      <h1>Carregando...</h1>
     </div>
   );
 }
