@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Header from '../components/Header';
 import Loading from './Loading';
@@ -6,6 +7,7 @@ import Loading from './Loading';
 export default function Login() {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -16,6 +18,7 @@ export default function Login() {
     setLoading(true);
     await createUser({ name: username });
     setLoading(false);
+    navigate('/search');
   };
 
   const loginForm = () => {
