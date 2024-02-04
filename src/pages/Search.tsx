@@ -5,21 +5,22 @@ import { AlbumType } from '../types';
 import AlbumList from '../components/AlbumList';
 
 export default function Search() {
-  const [artistName, setArtistName] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [albumList, setAlbumList]: [AlbumType[], any] = useState([]);
+  const [searchInput, setSearchInput] = useState<string>('');
+  const [artistName, setArtistName] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [albumList, setAlbumList] = useState<AlbumType[]>([]);
 
-  const handleArtistNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setArtistName(event.target.value);
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
   };
 
   const handleClick = async (event: React.MouseEvent) => {
     event.preventDefault();
     setLoading(true);
-    console.log(artistName);
-    const result = await searchAlbumsAPI(artistName);
+    const result = await searchAlbumsAPI(searchInput);
     setAlbumList(result);
-    setArtistName('');
+    setArtistName(searchInput);
+    setSearchInput('');
     setLoading(false);
   };
 
@@ -28,20 +29,20 @@ export default function Search() {
       <>
         <form>
           <input
-            value={ artistName }
-            onChange={ handleArtistNameChange }
+            value={ searchInput }
+            onChange={ handleSearchInputChange }
             type="text"
             data-testid="search-artist-input"
           />
           <button
             data-testid="search-artist-button"
             onClick={ handleClick }
-            disabled={ artistName.length < 2 }
+            disabled={ searchInput.length < 2 }
           >
             Pesquisar
           </button>
         </form>
-        <AlbumList albumList={ albumList } />
+        <AlbumList artistName={ artistName } albumList={ albumList } />
       </>
     );
   };

@@ -2,14 +2,15 @@ import { Link } from 'react-router-dom';
 import { AlbumType } from '../types';
 
 type AlbumListProps = {
+  artistName: string;
   albumList: AlbumType[];
 };
 
-export default function AlbumList({ albumList }: AlbumListProps) {
+export default function AlbumList({ artistName, albumList }: AlbumListProps) {
   return (
     <div data-testid="artist-name">
       <h1>
-        { albumList.length > 0 ? `Resultado de álbuns de: ${albumList[0].artistName}`
+        { albumList.length > 0 ? `Resultado de álbuns de: ${artistName}`
           : 'Nenhum álbum foi encontrado' }
       </h1>
       {albumList.map(({ collectionId, collectionName }) => (
