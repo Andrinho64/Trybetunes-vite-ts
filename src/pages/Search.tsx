@@ -23,29 +23,28 @@ export default function Search() {
     setSearchInput('');
     setLoading(false);
   };
+  if (loading) {
+    return <Loading />;
+  }
 
-  const search = () => {
-    return (
-      <>
-        <form>
-          <input
-            value={ searchInput }
-            onChange={ handleSearchInputChange }
-            type="text"
-            data-testid="search-artist-input"
-          />
-          <button
-            data-testid="search-artist-button"
-            onClick={ handleClick }
-            disabled={ searchInput.length < 2 }
-          >
-            Pesquisar
-          </button>
-        </form>
-        <AlbumList artistName={ artistName } albumList={ albumList } />
-      </>
-    );
-  };
-
-  return (loading ? <Loading /> : search());
+  return (
+    <>
+      <form>
+        <input
+          value={ searchInput }
+          onChange={ handleSearchInputChange }
+          type="text"
+          data-testid="search-artist-input"
+        />
+        <button
+          data-testid="search-artist-button"
+          onClick={ handleClick }
+          disabled={ searchInput.length < 2 }
+        >
+          Pesquisar
+        </button>
+      </form>
+      <AlbumList artistName={ artistName } albumList={ albumList } />
+    </>
+  );
 }
