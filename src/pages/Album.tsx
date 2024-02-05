@@ -19,7 +19,8 @@ export default function Album() {
   useEffect(() => {
     const handleParam = async () => {
       if (typeof idAlbum === 'string') {
-        const result = await getMusics(idAlbum);
+        const response = await getMusics(idAlbum);
+        const result = [...response];
         const albumInfo = result.shift() as AlbumType;
         setAlbumType(albumInfo);
         setAlbumList(result as SongType[]);
