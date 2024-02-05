@@ -1,4 +1,4 @@
-import { NavLink, Link, Outlet } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getUser } from '../services/userAPI';
 import { UserType } from '../types';

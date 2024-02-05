@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { SongType } from '../types';
 
 type SongTypeProps = {

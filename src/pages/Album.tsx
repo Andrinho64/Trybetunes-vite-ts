@@ -1,15 +1,12 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { string } from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Loading from './Loading';
 import { AlbumType, SongType } from '../types';
-import AlbumList from '../components/AlbumList';
 import MusicCard from './MusicCard';
 import Header from '../components/Header';
 
 export default function Album() {
-  const [artistName, setArtistName] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const [albumList, setAlbumList] = useState<[...SongType[]]>([]);
   const [albumType, setAlbumType] = useState<AlbumType>();
