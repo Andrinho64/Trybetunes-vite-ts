@@ -6,6 +6,7 @@ import Loading from './Loading';
 import { AlbumType, SongType } from '../types';
 import AlbumList from '../components/AlbumList';
 import MusicCard from './MusicCard';
+import Header from '../components/Header';
 
 export default function Album() {
   const [artistName, setArtistName] = useState<string>('');
@@ -35,6 +36,7 @@ export default function Album() {
   }
   return (
     <>
+      <Header />
       <p data-testid="artist-name">{ albumType?.artistName }</p>
       <p data-testid="album-name">{ albumType?.collectionName }</p>
       { albumList.map((PropsSong) => (

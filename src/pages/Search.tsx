@@ -3,6 +3,7 @@ import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
 import { AlbumType } from '../types';
 import AlbumList from '../components/AlbumList';
+import Header from '../components/Header';
 
 export default function Search() {
   const [searchInput, setSearchInput] = useState<string>('');
@@ -29,6 +30,7 @@ export default function Search() {
 
   return (
     <>
+      <Header />
       <form>
         <input
           value={ searchInput }

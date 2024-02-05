@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
-import Header from '../components/Header';
 import Loading from './Loading';
 
 export default function Login() {
@@ -23,24 +22,21 @@ export default function Login() {
 
   const loginForm = () => {
     return (
-      <>
-        <Header />
-        <form>
-          <input
-            value={ username }
-            onChange={ handleUsernameChange }
-            type="text"
-            data-testid="login-name-input"
-          />
-          <button
-            onClick={ handleClick }
-            disabled={ username.length < 3 }
-            data-testid="login-submit-button"
-          >
-            Entrar
-          </button>
-        </form>
-      </>
+      <form>
+        <input
+          value={ username }
+          onChange={ handleUsernameChange }
+          type="text"
+          data-testid="login-name-input"
+        />
+        <button
+          onClick={ handleClick }
+          disabled={ username.length < 3 }
+          data-testid="login-submit-button"
+        >
+          Entrar
+        </button>
+      </form>
     );
   };
 
